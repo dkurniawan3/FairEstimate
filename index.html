@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 77%;
+        width: 55%
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+      .calc {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color:#4d90fe;
+        text-decoration: none;
+        color: #FFFFFF;
+      }
+      #origin-input,
+      #destination-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 200px;
+      }
+
+      #origin-input:focus,
+      #destination-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #mode-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        margin-left: 12px;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #mode-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #btn-holder {
+        float: right;
+        margin-left: 50%;
+      }
+table {
+    width: 10%;
+    float: right;
+    margin-right: 10%;
+    font-family: Roboto;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+}
+
+tr:hover {background-color: #f5f5f5}
+
+h1 {
+  font-family: Roboto;
+  font-size: 40px;
+  text-align: center;
+  color: #ff8080;
+}
+
+span {
+  color:#e60000;
+}
+
+p {
+  font-family: Roboto;
+  font-size: 17px;
+  text-align: center;
+  color: gray;
+
+}
+
+
+    </style>
+  </head>
+<body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type=text/javascript>
+      var myList = [];
+      $(function() {
+        $('a#calculate').bind('click', function() {
+          $.getJSON('/_add_numbers', {
+            a: $('input[name="startLocation"]').val(),
+            b: $('input[name="endLocation"]').val()
+          }, function(data) {
+
+            $("#Address1").text(data.result[0].Address);
+            $("#Address2").text(data.result[1].Address);
+            $("#Address3").text(data.result[2].Address);
+            $("#Address4").text(data.result[3].Address);
+            $("#Address5").text(data.result[4].Address);
+            $("#Address6").text(data.result[5].Address);
+
+            $("#Transportation1").text(data.result[0].Transportation);
+            $("#Transportation2").text(data.result[1].Transportation);
+            $("#Transportation3").text(data.result[2].Transportation);
+            $("#Transportation4").text(data.result[3].Transportation);
+            $("#Transportation5").text(data.result[4].Transportation);
+            $("#Transportation6").text(data.result[5].Transportation);
+
+            $("#Time1").text(data.result[0].Time);
+            $("#Time2").text(data.result[1].Time);
+            $("#Time3").text(data.result[2].Time);
+            $("#Time4").text(data.result[3].Time);
+            $("#Time5").text(data.result[4].Time);
+            $("#Time6").text(data.result[5].Time);
+
+            $("#Price1").text(data.result[0].Price);
+            $("#Price2").text(data.result[1].Price);
+            $("#Price3").text(data.result[2].Price);
+            $("#Price4").text(data.result[3].Price);
+            $("#Price5").text(data.result[4].Price);
+            $("#Price6").text(data.result[5].Price);
+
+            $("#Distance1").text(data.result[0].Distance);
+            $("#Distance2").text(data.result[1].Distance);
+            $("#Distance3").text(data.result[2].Distance);
+            $("#Distance4").text(data.result[3].Distance);
+            $("#Distance5").text(data.result[4].Distance);
+            $("#Distance6").text(data.result[5].Distance);
+
+          });
+          return false;
+        });
+      });
+    </script>
+    <h1><span>Fair</span>Estimate</h1>
+    <p><i>A Rideshare Service Comparison Interface</i></p>
+    <table>
+  <tr>
+    <th>Address</th>
+    <th>Transportation</th>
+    <th>Time</th>
+    <th>Price</th>
+    <th>Distance</th>
+  </tr>
+  <tr>
+    <td id="Address1">?</td>
+    <td id="Transportation1">?</td>
+    <td id="Time1">?</td>
+    <td id="Price1">?</td>
+    <td id="Distance1">?</td>
+  </tr>
+  <tr>
+    <td id="Address2">?</td>
+    <td id="Transportation2">?</td>
+    <td id="Time2">?</td>
+    <td id="Price2">?</td>
+    <td id="Distance2">?</td>
+  </tr>
+  <tr>
+    <td id="Address3">?</td>
+    <td id="Transportation3">?</td>
+    <td id="Time3">?</td>
+    <td id="Price3">?</td>
+    <td id="Distance3">?</td>
+  </tr>
+  <tr>
+    <td id="Address4">?</td>
+    <td id="Transportation4">?</td>
+    <td id="Time4">?</td>
+    <td id="Price4">?</td>
+    <td id="Distance4">?</td>
+  </tr>
+  <tr>
+    <td id="Address5">?</td>
+    <td id="Transportation5">?</td>
+    <td id="Time5">?</td>
+    <td id="Price5">?</td>
+    <td id="Distance5">?</td>
+  </tr>
+  <tr>
+    <td id="Address6">?</td>
+    <td id="Transportation6">?</td>
+    <td id="Time6">?</td>
+    <td id="Price6">?</td>
+    <td id="Distance6">?</td>
+  </tr>
+</table>
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location" name="startLocation">
+
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location" name="endLocation">
+
+    <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-uber">
+      <label for="changemode-uber">Uber</label>
+
+      <input type="radio" name="type" id="changemode-taxi">
+      <label for="changemode-taxi">Taxi</label>
+      <form action="" method="POST">
+      <p><a href="javascript:void();" class="calc" id="calculate">Calculate</a>
+      </form>
+    </div>
+  </form>
+
+    <div id="map"></div>
+
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          mapTypeControl: false,
+          center: {lat: 40.7128, lng: -74.0059},
+          zoom: 13
+        });
+
+        /*var myLatLng = {lat: 40.760895, lng: -73.985131};
+        var myLatLng2 = {lat: 40.757480, lng: -73.986545};
+        var myLatLng3 = {lat: 40.756895, lng: -73.985131};
+        var myLatLng4 = {lat: 40.757480, lng: -73.9837167};
+        var myLatLng5 = {lat: 40.7596021, lng: -73.98442389};
+
+
+        var marker1 = new google.maps.Marker({
+            position: myLatLng,
+            map: map
+          });
+        var marker2 = new google.maps.Marker({
+            position: myLatLng2,
+            map: map
+          });
+        var marker3 = new google.maps.Marker({
+            position: myLatLng3,
+            map: map
+          });
+        var marker4 = new google.maps.Marker({
+            position: myLatLng4,
+            map: map
+          });
+        var marker5 = new google.maps.Marker({
+            position: myLatLng5,
+            map: map
+          });
+
+        marker.setMap(map);
+        marker2.setMap(map);
+        marker3.setMap(map);
+        marker4.setMap(map);
+        marker5.setMap(map);*/
+
+
+        new AutocompleteDirectionsHandler(map);
+      }
+
+      function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        this.travelMode = 'WALKING';
+        var originInput = document.getElementById('origin-input');
+        var destinationInput = document.getElementById('destination-input');
+        var modeSelector = document.getElementById('mode-selector');
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(map);
+
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, {placeIdOnly: true});
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, {placeIdOnly: true});
+
+        this.setupClickListener('changemode-walking', 'WALKING');
+        this.setupClickListener('changemode-uber', 'DRIVING');
+        this.setupClickListener('changemode-taxi', 'DRIVING');
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+      }
+
+      // Sets a listener on a radio button to change the filter type on Places
+      // Autocomplete.
+      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+        var radioButton = document.getElementById(id);
+        var me = this;
+        radioButton.addEventListener('click', function() {
+          me.travelMode = mode;
+          me.route();
+        });
+      };
+
+      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          if (!place.place_id) {
+            window.alert("Please select an option from the dropdown list.");
+            return;
+          }
+          if (mode === 'ORIG') {
+            me.originPlaceId = place.place_id;
+          } else {
+            me.destinationPlaceId = place.place_id;
+          }
+          me.route();
+        });
+
+      };
+
+      AutocompleteDirectionsHandler.prototype.route = function() {
+        if (!this.originPlaceId || !this.destinationPlaceId) {
+          return;
+        }
+        var me = this;
+
+        this.directionsService.route({
+          origin: {'placeId': this.originPlaceId},
+          destination: {'placeId': this.destinationPlaceId},
+          travelMode: this.travelMode
+        }, function(response, status) {
+          if (status === 'OK') {
+            me.directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      };
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgPuX1YscoZPqeSbZn591zI-0-GD-m3os&libraries=places&callback=initMap"
+        async defer></script>
+  </body>
+</html>
