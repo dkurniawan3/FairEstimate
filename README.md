@@ -4,7 +4,7 @@ Web Application using flask and Google/Uber APIs to compare and visualize real-t
 DESCRIPTION:
 This package consists of all the necessary code and information about "FairEstimate",
 a web application designed to compare the best rideshare to use at any given time. The contents of this package are split up into two parts:
-
+  
     1. DOC:
         - Our team's final report describing our proposed methods, algorithms, experiments, evaluations, interface, and conclusions. It outlines why we took the steps we did and what we accomplished by doing so.
         - Our team's final poster that gives a brief summary of the project and the most important findings.
@@ -20,7 +20,8 @@ a web application designed to compare the best rideshare to use at any given tim
             7. test.R - Testing script for the different algorithms used such as neural networks and kNN.
 
 INSTALLATION (includes model building):
-    1. Download the January 2016 Yellow NYC Taxi Dataset from the following link: http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml
+    
+    1. Download the January 2016 Yellow NYC Taxi Dataset from the following link:   http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml
     2. Sign up for Uber and Google Maps API server tokens
     3. Use Python 2.7+
     4. Necessary R packages to install: ggplot2, nnet
@@ -28,5 +29,6 @@ INSTALLATION (includes model building):
 
 
 EXECUTION:
+    
     1. Run "python app.py" from terminal/command line. It will generate a local host (something like http://127.0.0.1:5000) for you to copy and paste into your address bar in Chrome. Add "/table" to the end of the local host (so you should be putting http://127.0.0.1:5000/table into the address bar)
     2. Enter your desired starting/ending locations into the input field. Click "Calculate" and wait for the results to generate.
