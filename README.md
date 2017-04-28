@@ -26,6 +26,7 @@ INSTALLATION (includes model building):
     3. Use Python 2.7+
     4. Necessary R packages to install: ggplot2, nnet
     5. Necessary Python packages to install: uber_rides, flask, flask-bootstrap, flask_wtf, urllib2, WTForms (should be as simple as running "pip install _____")
+    6. Lastly, store index.html in a folder called "templates" in the same directory as the other code.
 
 
 EXECUTION:
